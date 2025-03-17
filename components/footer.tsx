@@ -108,7 +108,7 @@ export function Footer() {
           {/* Logo */}
           <div>
             <Image
-              src={"/icon.png"}
+              src={"/images/logo-white.png"}
               alt="Raven Padel Logo"
               width={400}
               height={400}

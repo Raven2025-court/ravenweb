@@ -55,42 +55,40 @@ const processSteps: ProcessStep[] = [
     number: 1,
     title: "Initial Client Meeting",
     description:
-      "We discuss your vision, requirements, and answer any questions about the padel court installation process.",
-    detail: "Understanding client needs and setting expectations.",
+      "We discuss your vision, requirements, and answer any questions about the padel court installation process. Understanding client needs and setting expectations.",
+    detail: "",
     isReversed: false,
   },
   {
     number: 2,
     title: "On-Site Walkthrough",
     description:
-      "Our team visits your property to assess the space and determine the optimal court location.",
-    detail: "Evaluating the space and identifying optimal court placement.",
+      "Our team visits your property to assess the space and determine the optimal court location. Evaluating the space and identifying optimal court placement.",
+    detail: "",
     isReversed: true,
   },
   {
     number: 3,
     title: "Landscaping Assessment",
     description:
-      "We evaluate terrain conditions and create a preparation plan for your site.",
-    detail: "Planning site preparation needs for optimal court foundation.",
+      "We evaluate terrain conditions and create a preparation plan for your site. Planning site preparation needs for optimal court foundation.",
+    detail: "",
     isReversed: false,
   },
   {
     number: 4,
     title: "Budget Proposal",
     description:
-      "We provide a comprehensive budget proposal with transparent pricing for your review.",
-    detail:
-      "Transparent pricing with detailed breakdown of costs and timeline.",
+      "We provide a comprehensive budget proposal with transparent pricing for your review. Transparent pricing with detailed breakdown of costs and timeline.",
+    detail: "",
     isReversed: true,
   },
   {
-    number: "5-7",
+    number: "5",
     title: "Project Execution",
     description:
-      "We handle permits, landscaping, flooring, and construction of the court structure with expert precision.",
-    detail:
-      "Complete turnkey construction with regular updates throughout the process.",
+      "We handle permits, landscaping, flooring, and construction of the court structure with expert precision. Complete turnkey construction with regular updates throughout the process.",
+    detail: "",
     isReversed: false,
   },
 ];
@@ -322,7 +320,7 @@ const ProcessStepItem: React.FC<{ step: ProcessStep; index: number }> = ({
           </>
         ) : (
           <motion.div
-            className="bg-white p-4 rounded-lg"
+            className=" p-4 rounded-lg"
             variants={detailVariants}
             whileHover={pulseAnimation}
           >
@@ -373,7 +371,7 @@ const ProcessStepItem: React.FC<{ step: ProcessStep; index: number }> = ({
           </>
         ) : (
           <motion.div
-            className="bg-white p-4 rounded-lg"
+            className="p-4 rounded-lg"
             variants={detailVariants}
             whileHover={pulseAnimation}
           >

@@ -8,7 +8,6 @@ import {
   WrenchIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useRef } from "react";
 
 export function WhatSetsUsApart() {
   const advantageItems = [
@@ -85,8 +84,6 @@ export function WhatSetsUsApart() {
       transition: { type: "spring", stiffness: 300, damping: 10 },
     },
   };
-
-  const visionBackgroundRef = useRef<HTMLDivElement>(null);
 
   return (
     <section id="difference" className="py-16 sm:py-20 overflow-hidden">
@@ -170,27 +167,6 @@ export function WhatSetsUsApart() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <motion.div
-              className="absolute top-0 right-0 w-64 h-64 opacity-10"
-              ref={visionBackgroundRef}
-              animate={{
-                rotate: [0, 180],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                rotate: { duration: 30, repeat: Infinity, ease: "linear" },
-                scale: { duration: 8, repeat: Infinity, repeatType: "reverse" },
-              }}
-            >
-              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fill="currentColor"
-                  d="M45.3,-52.9C58.9,-42.2,70.3,-28.7,76.4,-12.2C82.5,4.4,83.4,23.8,75.1,38.5C66.8,53.2,49.4,63.1,31.6,69C13.9,74.8,-4.3,76.5,-22.1,72.2C-40,67.9,-57.6,57.5,-67.4,42.4C-77.3,27.3,-79.5,7.5,-76.6,-11.2C-73.8,-30,-65.9,-47.7,-52.6,-58.5C-39.3,-69.3,-19.6,-73.2,-2.2,-70.7C15.3,-68.2,31.7,-63.4,45.3,-52.9Z"
-                  transform="translate(100 100)"
-                />
-              </svg>
-            </motion.div>
-
             <motion.h3
               className="text-2xl md:text-3xl font-bold mb-6 relative z-10"
               initial={{ opacity: 0, x: -20 }}

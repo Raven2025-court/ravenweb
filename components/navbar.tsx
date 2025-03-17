@@ -142,7 +142,7 @@ export function Navbar() {
         >
           <Link
             href="/"
-            className="hover:cursor-pointer md:px-3 md:py-2 md:rounded-full"
+            className="hover:cursor-pointer md:px-3 md:py-2 md:rounded-full flex items-center gap-2"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -151,8 +151,9 @@ export function Navbar() {
             <Image
               src={logo}
               alt="Logo Image"
-              className="size-5 md:size-8 relative"
+              className="size-8 md:size-10 relative"
             />
+            <p className="text-primary text-lg font-semibold">Raven Padel</p>
           </Link>
         </motion.div>
 
