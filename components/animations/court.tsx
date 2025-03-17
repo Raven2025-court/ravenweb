@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { Net } from "./net";
 import { Fence } from "./fence";
 import { GlassWalls } from "./glass-walls";
+import { CornerFences } from "./corner-fences";
 
 // Court dimensions
 const COURT_WIDTH = 20;
@@ -53,8 +54,10 @@ export const Court = ({ turfColor = "#455b84" }) => {
       <Net />
       {/* Add the Glass Walls */}
       <GlassWalls />
-      {/* Add the Fence on top of the back and front walls */}
+      {/* Add the Fence on top of the side walls */}
       <Fence />
+      {/* Add the corner fences on top of the back and front walls */}
+      <CornerFences />
     </group>
   );
 };

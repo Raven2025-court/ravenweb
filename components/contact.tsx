@@ -1,7 +1,19 @@
 "use client";
 
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
 import { useState, ChangeEvent, FormEvent } from "react";
+import { SocialLink } from "./footer";
+import { toast } from "sonner";
+import { sendEmail } from "@/app/actions";
 
 interface FormState {
   name: string;
@@ -24,6 +36,7 @@ export function ContactSection() {
     message: "",
     projectType: "installation",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -35,19 +48,33 @@ export function ContactSection() {
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log("Form submitted:", formState);
-    // Reset form or show success message
-    alert("Thank you for your message. We'll be in touch soon!");
-    setFormState({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-      projectType: "installation",
-    });
+    setIsSubmitting(true);
+
+    try {
+      const result = await sendEmail(formState);
+
+      if (result.success) {
+        toast.success(result.message || "Message sent successfully!");
+        // Reset form after successful submission
+        setFormState({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          projectType: "installation",
+        });
+      } else {
+        // Handle error
+        toast.error(result.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Failed to send your message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -80,7 +107,7 @@ export function ContactSection() {
                   <div>
                     <p className="font-medium text-primary">Email Us</p>
                     <a
-                      href="mailto:matias@ravenpadelgrowth.com"
+                      href="mailto:info@ravenpadelgrowth.com"
                       className="text-secondary hover:underline"
                     >
                       info@ravenpadelgrowth.com
@@ -123,19 +150,26 @@ export function ContactSection() {
               <div className="mt-8 pt-8 border-t border-border">
                 <h4 className="font-medium text-primary mb-4">Follow Us</h4>
                 <div className="flex space-x-4">
-                  {["facebook", "instagram", "linkedin", "twitter"].map(
-                    (social) => (
-                      <a
-                        key={social}
-                        href={`#${social}`}
-                        className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center hover:bg-secondary/20 transition-colors"
-                      >
-                        <span className="sr-only">{social}</span>
-                        {/* Social icons would go here */}
-                        <div className="w-5 h-5 bg-primary/30 rounded-full"></div>
-                      </a>
-                    )
-                  )}
+                  <SocialLink
+                    href="https://facebook.com"
+                    icon={<Facebook size={18} />}
+                    label="Facebook"
+                  />
+                  <SocialLink
+                    href="https://instagram.com"
+                    icon={<Instagram size={18} />}
+                    label="Instagram"
+                  />
+                  <SocialLink
+                    href="https://linkedin.com"
+                    icon={<Linkedin size={18} />}
+                    label="LinkedIn"
+                  />
+                  <SocialLink
+                    href="https://twitter.com"
+                    icon={<Twitter size={18} />}
+                    label="Twitter"
+                  />
                 </div>
               </div>
             </div>
@@ -166,6 +200,7 @@ export function ContactSection() {
                       required
                       className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-secondary/50"
                       placeholder="Your name"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div>
@@ -184,6 +219,7 @@ export function ContactSection() {
                       required
                       className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-secondary/50"
                       placeholder="your@email.com"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -203,6 +239,7 @@ export function ContactSection() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-secondary/50"
                     placeholder="Your phone number (optional)"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -219,6 +256,7 @@ export function ContactSection() {
                     value={formState.projectType}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-secondary/50 bg-white"
+                    disabled={isSubmitting}
                   >
                     <option value="installation">New Court Installation</option>
                     <option value="renovation">Court Renovation</option>
@@ -246,6 +284,7 @@ export function ContactSection() {
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-secondary/50 resize-none"
                     placeholder="Tell us about your project or inquiry..."
+                    disabled={isSubmitting}
                   ></textarea>
                 </div>
 
@@ -253,9 +292,19 @@ export function ContactSection() {
                   <button
                     type="submit"
                     className="flex items-center justify-center space-x-2 bg-primary hover:bg-primary/90 text-white py-3 px-6 rounded-lg font-medium transition-colors w-full sm:w-auto"
+                    disabled={isSubmitting}
                   >
-                    <span>Send Message</span>
-                    <Send size={16} />
+                    {isSubmitting ? (
+                      <>
+                        <span>Sending...</span>
+                        <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white"></div>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <Send size={16} />
+                      </>
+                    )}
                   </button>
                 </div>
               </form>

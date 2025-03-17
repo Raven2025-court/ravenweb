@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Funnel_Display } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const funnel = Funnel_Display({
   subsets: ["latin"],
@@ -68,6 +69,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${funnel.className}`} suppressHydrationWarning>
         {children}
+        <Toaster closeButton richColors />
       </body>
     </html>
   );

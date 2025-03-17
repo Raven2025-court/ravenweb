@@ -31,7 +31,7 @@ interface SocialLinkProps {
   label: string;
 }
 
-const SocialLink = ({ href, icon, label }: SocialLinkProps) => (
+export const SocialLink = ({ href, icon, label }: SocialLinkProps) => (
   <a
     href={href}
     className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all"
@@ -97,15 +97,15 @@ export function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Our Services</h3>
             <ul>
-              <FooterLink href="#installation">Court Installation</FooterLink>
-              <FooterLink href="#renovation">Court Renovation</FooterLink>
-              <FooterLink href="#consulting">Consulting Services</FooterLink>
-              <FooterLink href="#events">Tournament Organization</FooterLink>
-              <FooterLink href="#community">Community Building</FooterLink>
+              <FooterLink href="#services">Court Installation</FooterLink>
+              <FooterLink href="#services">Court Renovation</FooterLink>
+              <FooterLink href="#services">Consulting Services</FooterLink>
+              <FooterLink href="#services">Tournament Organization</FooterLink>
+              <FooterLink href="#services">Community Building</FooterLink>
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Logo */}
           <div>
             <Image
               src={"/icon.png"}
