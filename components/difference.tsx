@@ -114,7 +114,6 @@ export function WhatSetsUsApart() {
           </p>
         </motion.div>
 
-        {/* Improved grid layout with animations */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-5 gap-8"
           initial="hidden"
@@ -123,15 +122,14 @@ export function WhatSetsUsApart() {
           variants={staggerContainer}
         >
           {advantageItems.map((item, index) => {
-            let colSpan = "md:col-span-3"; // Default to 3 columns
+            let colSpan = "md:col-span-3";
 
-            if (index === 1 || index === 2) colSpan = "md:col-span-2"; // Adjusting middle items
-            if (index === 4) colSpan = "md:col-span-5"; // Last item takes full width
-
+            if (index === 1 || index === 2) colSpan = "md:col-span-2";
+            if (index === 4) colSpan = "md:col-span-5";
             return (
               <motion.div
                 key={index}
-                className={`bg-white p-8 rounded-lg shadow-md border border-border hover:border-secondary transition-all duration-300 ${colSpan}`}
+                className={`bg-white p-8 rounded-lg shadow-md border border-border hover:border-accent transition-all duration-300 ${colSpan}`}
                 variants={fadeInScale}
                 custom={index}
                 whileHover={{
@@ -158,7 +156,6 @@ export function WhatSetsUsApart() {
           })}
         </motion.div>
 
-        {/* Redesigned vision section with animations */}
         <motion.div
           className="mt-16"
           initial="hidden"

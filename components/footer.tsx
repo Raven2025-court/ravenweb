@@ -34,7 +34,7 @@ interface SocialLinkProps {
 export const SocialLink = ({ href, icon, label }: SocialLinkProps) => (
   <a
     href={href}
-    className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all"
+    className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-all"
     aria-label={label}
   >
     {icon}

@@ -3,6 +3,7 @@
 @theme {
   --color-primary: rgba(15, 34, 62, 1);
   --color-secondary: rgba(218, 255, 0, 1);
+  --color-accent: rgba(12, 108, 153, 1);
   --color-border: rgba(225, 229, 232, 1);
   --color-muted: rgba(180, 180, 188, 1);
   --color-muted-foreground: rgba(113, 113, 122, 1);
@@ -12,8 +13,27 @@
   * {
     @apply border-border ;
   }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-heading);
+    }
 
   body {
     @apply bg-white text-primary;
+    font-family: var(--font-body);
   }
+html,
+body {
+  @apply m-0 p-0 overflow-x-hidden;
+}
+
+#__next,
+main {
+  /* For Next.js */
+  @apply m-0 p-0;
+}
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronRight, ChevronLeft, ExternalLink } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { FancyButton } from "./ui/button";
 import Image from "next/image";
 
@@ -93,7 +93,7 @@ export function RecentProjects() {
         <div className="relative bg-white rounded-lg shadow-xl border border-border overflow-hidden">
           {/* Project Image Area */}
           <div className="grid md:grid-cols-2">
-            <div className="bg-secondary/20 flex items-center justify-center p-12 min-h-[400px]">
+            <div className="bg-secondary/20 flex items-center justify-center p-4 min-h-[400px]">
               {/* Placeholder for project image */}
               <div className="relative w-full h-full">
                 <Image
@@ -120,7 +120,7 @@ export function RecentProjects() {
                 {projects[activeProject].title}
               </h3>
 
-              <p className="text-secondary font-medium mb-6">
+              <p className="text-accent font-medium mb-6">
                 {projects[activeProject].location}
               </p>
 
@@ -135,19 +135,14 @@ export function RecentProjects() {
                 <ul className="space-y-2">
                   {projects[activeProject].features.map((feature, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="text-secondary mr-2">•</span>
+                      <span className="text-accent mr-2">•</span>
                       <span className="text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="flex items-center justify-between">
-                <button className="text-primary hover:text-secondary flex items-center transition-colors">
-                  <span className="mr-1">View Project Details</span>
-                  <ExternalLink size={16} />
-                </button>
-
+              <div className="flex items-center justify-end">
                 <div className="flex space-x-2">
                   <button
                     onClick={prevProject}
@@ -176,7 +171,7 @@ export function RecentProjects() {
               className={`p-4 border rounded-lg text-left transition-all ${
                 activeProject === index
                   ? "border-secondary bg-secondary/10"
-                  : "border-border hover:border-secondary/50"
+                  : "border-border hover:border-accent/50"
               }`}
             >
               <h4 className="font-medium text-primary truncate">

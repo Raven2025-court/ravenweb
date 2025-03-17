@@ -194,7 +194,7 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={(e) => scrollToSection("contact", e)}
-              className="px-4 py-2 bg-primary rounded-full text-secondary text-center font-medium mt-2"
+              className="px-4 py-2 bg-primary rounded-full text-white text-center font-medium mt-2"
             >
               Let&apos;s talk
             </a>
@@ -249,7 +249,7 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={(e) => scrollToSection("contact", e)}
-              className="px-4 py-2 bg-primary rounded-full text-secondary tracking-tight font-medium hover:bg-primary/90 transition-colors"
+              className="px-4 py-2 bg-primary rounded-full text-white tracking-tight font-medium hover:bg-primary/90 transition-colors"
             >
               Let&apos;s talk
             </a>

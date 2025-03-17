@@ -78,14 +78,14 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-20 bg-secondary/10">
+    <section id="contact" className="py-16 sm:py-20 bg-primary/40">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-primary">
             Contact Us
           </h2>
           <div className="w-24 h-1 bg-secondary mx-auto mb-8"></div>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto">
             Ready to bring padel to your facility? Get in touch with our team to
             discuss your project needs and vision.
           </p>
@@ -108,7 +108,7 @@ export function ContactSection() {
                     <p className="font-medium text-primary">Email Us</p>
                     <a
                       href="mailto:info@ravenpadelgrowth.com"
-                      className="text-secondary hover:underline"
+                      className="text-accent hover:underline"
                     >
                       info@ravenpadelgrowth.com
                     </a>
@@ -123,7 +123,7 @@ export function ContactSection() {
                     <p className="font-medium text-primary">Call Us</p>
                     <a
                       href="tel:+1234567890"
-                      className="text-secondary hover:underline"
+                      className="text-accent hover:underline"
                     >
                       +1 (234) 567-890
                     </a>

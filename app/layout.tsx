@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
-import { Funnel_Display } from "next/font/google";
+import { Funnel_Display, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 
-const funnel = Funnel_Display({
+// Configuración de Google Fonts
+const funnelDisplay = Funnel_Display({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-heading",
+});
+
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
 });
 
 export const metadata: Metadata = {
@@ -66,8 +75,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${funnel.className}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${funnelDisplay.variable} ${nunitoSans.variable}`}
+    >
+      <body className="font-body" suppressHydrationWarning>
         {children}
         <Toaster closeButton richColors />
       </body>

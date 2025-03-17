@@ -82,8 +82,7 @@ export function CourtCanvas() {
             <AlertTriangle size={16} />
             <p className="text-center">
               Note: This 3D model is a simplified representation of a standard
-              padel court. For a detailed view of our custom-built courts and
-              completed projects, please visit our Projects section.
+              padel court. Feel free to move the 3D model around!
             </p>
             <button
               onClick={() => setShowDisclaimer(false)}

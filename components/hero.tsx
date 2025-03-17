@@ -1,9 +1,9 @@
 "use client";
 
-import { CourtCanvas } from "./animations/court-canvas";
 import { FancyButton } from "./ui/button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export function Hero() {
   const [isClient, setIsClient] = useState(false);
@@ -95,15 +95,13 @@ export function Hero() {
     },
   };
 
-  // Canvas fade-in animation
-  const canvasVariants = {
-    hidden: { opacity: 0, y: 40 },
+  // Background image animation
+  const bgImageVariants = {
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 1,
-        delay: 1.6,
+        duration: 1.2,
         ease: "easeOut",
       },
     },
@@ -119,8 +117,29 @@ export function Hero() {
   };
 
   return (
-    <section className="py-[50px] sm:py-12 md:py-24 overflow-clip">
-      <div className="flex flex-col items-center px-4 gap-4 max-w-[90vw] md:max-w-[70vw] mx-auto">
+    <section className="relative w-full min-h-screen overflow-hidden mt-[-90px] pt-0">
+      {/* Background image */}
+      {isClient && (
+        <motion.div
+          className="absolute inset-0 top-0 left-0 right-0 bottom-0 w-full h-full z-0"
+          variants={bgImageVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <Image
+            src="/images/padel-court-background.png"
+            alt="Padel court"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
+        </motion.div>
+      )}
+
+      {/* Content section with padding to ensure it's not at the very top */}
+      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 py-20 gap-6 max-w-[90vw] md:max-w-[70vw] mx-auto">
         {isClient ? (
           <>
             <motion.h1
@@ -140,7 +159,7 @@ export function Hero() {
               ))}
               <br />
               <motion.span
-                className="text-secondary/85 text-4xl sm:text-5xl md:text-7xl tracking-tighter font-semibold"
+                className="text-accent text-4xl sm:text-5xl md:text-7xl tracking-tighter font-semibold"
                 variants={subtitleVariants}
                 initial="hidden"
                 animate="visible"
@@ -165,17 +184,9 @@ export function Hero() {
               animate="visible"
               whileHover="hover"
               whileTap="tap"
+              className="mt-4"
             >
               <FancyButton text="Get a Quote" onClick={scrollToContact} />
-            </motion.div>
-
-            <motion.div
-              className="w-full"
-              variants={canvasVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <CourtCanvas />
             </motion.div>
           </>
         ) : (
@@ -191,8 +202,9 @@ export function Hero() {
               High-quality padel court installation with expert guidance and
               unbeatable pricing.
             </p>
-            <FancyButton text="Get a Quote" onClick={scrollToContact} />
-            <CourtCanvas />
+            <div className="mt-4">
+              <FancyButton text="Get a Quote" onClick={scrollToContact} />
+            </div>
           </>
         )}
       </div>
