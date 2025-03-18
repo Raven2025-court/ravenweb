@@ -12,7 +12,7 @@ const COMPANY = {
   email: "info@ravenpadelgrowth.com",
   website: "https://ravenpadelgrowth.com",
   logo: "https://ravenpadelgrowth.com/icon.png",
-  verifiedSender: "noreply@ravenpadelgrowth.com",
+  verifiedSender: "info@ravenpadelgrowth.com",
   replyToEmail: "info@ravenpadelgrowth.com",
 };
 
