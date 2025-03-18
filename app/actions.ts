@@ -12,7 +12,7 @@ const COMPANY = {
   email: "info@ravenpadelgrowth.com",
   website: "https://ravenpadelgrowth.com",
   logo: "https://ravenpadelgrowth.com/icon.png",
-  verifiedSender: "info@ravenpadelgrowth.com", // Update with your verified sender
+  verifiedSender: "noreply@ravenpadelgrowth.com",
   replyToEmail: "info@ravenpadelgrowth.com",
 };
 
@@ -129,11 +129,11 @@ export async function sendEmail(values: z.infer<typeof contactFormSchema>) {
   };
 
   try {
-    // Send internal notification email ${COMPANY.name} Contact <${COMPANY.verifiedSender}>
+    // Send internal notification email
     const internalEmailResult = await resend.emails.send({
-      from: `onboarding@resend.dev`,
+      from: `${COMPANY.name} Contact <${COMPANY.verifiedSender}>`,
       to: COMPANY.email,
-      subject: `New Contact Form: ${projectType} - ${name} TEST`,
+      subject: `New Contact Form: ${projectType} - ${name}`,
       replyTo: email,
       html: createInternalEmailHTML(templateData),
       tags: [{ name: "source", value: "contact_form" }],
@@ -147,7 +147,7 @@ export async function sendEmail(values: z.infer<typeof contactFormSchema>) {
 
     // Send confirmation email to user
     const confirmationEmailResult = await resend.emails.send({
-      from: `onboarding@resend.dev`,
+      from: `${COMPANY.name} Contact <${COMPANY.verifiedSender}>`,
       to: email,
       subject: `Thanks for reaching out, ${name}!`,
       replyTo: COMPANY.replyToEmail,
