@@ -107,7 +107,7 @@ export function Hero() {
     },
   };
 
-  // Function to handle smooth scrolling
+  // Function to handle scrolling
   const scrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const contactSection = document.getElementById("contact");
@@ -117,7 +117,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden mt-[-90px] pt-0">
+    <section className="relative w-full min-h-screen overflow-hidden  pt-0">
       {/* Background image */}
       {isClient && (
         <motion.div
@@ -138,8 +138,8 @@ export function Hero() {
         </motion.div>
       )}
 
-      {/* Content section with padding to ensure it's not at the very top */}
-      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 py-20 gap-6 max-w-[90vw] md:max-w-[70vw] mx-auto">
+      {/* Content section */}
+      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 py-20 gap-6 max-w-[90vw] lg:max-w-[70vw] mx-auto">
         {isClient ? (
           <>
             <motion.h1
@@ -164,7 +164,7 @@ export function Hero() {
                 initial="hidden"
                 animate="visible"
               >
-                Padel by Raven
+                with Raven Padel
               </motion.span>
             </motion.h1>
 

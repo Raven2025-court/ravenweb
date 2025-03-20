@@ -7,7 +7,6 @@ import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-// Define links with proper section IDs that match your page sections
 const links = [
   {
     name: "About",
@@ -35,7 +34,7 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Function to handle smooth scrolling
+  // Function to handle scrolling
   const scrollToSection = (sectionId: string, event?: React.MouseEvent) => {
     if (event) {
       event.preventDefault();
@@ -131,8 +130,31 @@ export function Navbar() {
     },
   };
 
+  // Add this near the top of your component with your other state variables
+  const [scrollY, setScrollY] = useState(0);
+
+  // Add this useEffect to track scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    // Add event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Call once to set initial value
+    handleScroll();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-4 z-50 bg-white border rounded-full mx-auto shadow-md px-4 max-w-[80vw] md:max-w-[50vw]">
+    <header
+      className={`fixed ${
+        scrollY > 0 ? "top-4" : "top-4"
+      } z-50 left-1/2 transform -translate-x-1/2 bg-white border rounded-full shadow-md px-4 w-[80vw] lg:w-[70vw] xl:w-[60vw]`}
+    >
       <div className="px-4 py-2 md:py-0 flex items-center justify-between">
         {/* Logo */}
         <motion.div
@@ -153,13 +175,15 @@ export function Navbar() {
               alt="Logo Image"
               className="size-8 md:size-10 relative"
             />
-            <p className="text-primary text-lg font-semibold">Raven Padel</p>
+            <p className="text-primary text-lg font-semibold hidden md:flex">
+              Raven Padel
+            </p>
           </Link>
         </motion.div>
 
         {/* Mobile Menu Button */}
         <motion.div
-          className="md:hidden"
+          className="xl:hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -172,7 +196,7 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         <motion.div
-          className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-lg p-4 md:hidden"
+          className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-lg p-4 xl:hidden"
           initial="closed"
           animate={isMobileMenuOpen ? "open" : "closed"}
           variants={mobileMenuVariants}
@@ -204,7 +228,7 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <motion.nav
-          className="hidden md:flex gap-2 lg:gap-4 items-center"
+          className="hidden xl:flex gap-2 lg:gap-4 items-center"
           initial="hidden"
           animate="visible"
           variants={{
