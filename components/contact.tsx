@@ -122,14 +122,17 @@ export function ContactSection() {
                   <div>
                     <p className="font-medium text-primary">Call Us</p>
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+19144158800"
                       className="text-accent hover:underline"
                     >
-                      +1 (234) 567-890
+                      +1 (914) 415-8800
                     </a>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Mon-Fri, 9am-5pm EST
-                    </p>
+                    <a
+                      href="tel:+5692311914"
+                      className="text-accent hover:underline"
+                    >
+                      +56 9 8231 1914
+                    </a>
                   </div>
                 </div>
 
@@ -151,22 +154,22 @@ export function ContactSection() {
                 <h4 className="font-medium text-primary mb-4">Follow Us</h4>
                 <div className="flex space-x-4">
                   <SocialLink
-                    href="https://facebook.com"
+                    href="/"
                     icon={<Facebook size={18} />}
                     label="Facebook"
                   />
                   <SocialLink
-                    href="https://instagram.com"
+                    href="/"
                     icon={<Instagram size={18} />}
                     label="Instagram"
                   />
                   <SocialLink
-                    href="https://linkedin.com"
+                    href="/"
                     icon={<Linkedin size={18} />}
                     label="LinkedIn"
                   />
                   <SocialLink
-                    href="https://twitter.com"
+                    href="/"
                     icon={<Twitter size={18} />}
                     label="Twitter"
                   />

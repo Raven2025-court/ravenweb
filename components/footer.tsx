@@ -59,22 +59,22 @@ export function Footer() {
 
             <div className="flex space-x-3">
               <SocialLink
-                href="https://facebook.com"
+                href="/"
                 icon={<Facebook size={18} />}
                 label="Facebook"
               />
               <SocialLink
-                href="https://instagram.com"
+                href="/"
                 icon={<Instagram size={18} />}
                 label="Instagram"
               />
               <SocialLink
-                href="https://linkedin.com"
+                href="/"
                 icon={<Linkedin size={18} />}
                 label="LinkedIn"
               />
               <SocialLink
-                href="https://twitter.com"
+                href="/"
                 icon={<Twitter size={18} />}
                 label="Twitter"
               />
